@@ -1,0 +1,401 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import Script from "next/script";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Play } from "lucide-react";
+
+export default function Home() {
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [mounted, setMounted] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [selectedTestimonial, setSelectedTestimonial] = useState<{ videoUrl: string; author: string } | null>(null);
+
+  // Initialize theme from localStorage on mount
+  useEffect(() => {
+    setMounted(true);
+    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
+    if (savedTheme) {
+      setTheme(savedTheme);
+      document.documentElement.classList.toggle("dark", savedTheme === "dark");
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
+  };
+
+  // Prevent flash of wrong theme
+  if (!mounted) {
+    return null;
+  }
+
+  return (
+    <div className="min-h-screen bg-neutral-50 dark:bg-neutral-950 transition-colors relative">
+      {/* Background Pattern */}
+      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-200/20 via-neutral-50 to-neutral-50 dark:from-neutral-900/20 dark:via-neutral-950 dark:to-neutral-950 pointer-events-none" />
+
+      {/* Animated Glowing Elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-sky-500/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-indigo-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '0.5s' }} />
+      </div>
+
+      {/* Logo at Top Right */}
+      <div className="fixed top-6 right-6 z-50 flex items-end gap-1">
+        <Image
+          src="/cliniclab-logo.png"
+          alt="Clinic Lab AI Logo"
+          width={40}
+          height={40}
+          className="w-10 h-10"
+        />
+        <h1 className="text-2xl font-bold tracking-tight">
+          <span className="text-neutral-900 dark:text-white">
+            Clinic Lab{" "}
+          </span>
+          <span className="text-sky-500">AI</span>
+        </h1>
+      </div>
+
+      {/* Theme Toggle Button */}
+      <button
+        onClick={toggleTheme}
+        className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110"
+        aria-label="Toggle theme"
+      >
+        {theme === "dark" ? (
+          <svg
+            className="w-5 h-5 text-yellow-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+            />
+          </svg>
+        ) : (
+          <svg
+            className="w-5 h-5 text-indigo-600"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+            />
+          </svg>
+        )}
+      </button>
+
+      {/* Main Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
+        {/* Hero Section */}
+        <div className="text-center mb-16">
+          <div className="mb-6">
+            <p className="text-sm sm:text-base uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-3 font-semibold">
+              For Dental Practice Owners
+            </p>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-neutral-900 dark:text-white mb-4 leading-tight">
+              Tired of Losing Patients to Voicemail?
+            </h1>
+          </div>
+          <p className="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto leading-relaxed">
+            Watch below to find out how to use A.I. to bring in <span className="font-semibold text-neutral-900 dark:text-white">25% more patients</span> in as soon as <span className="font-semibold text-sky-500">14 days</span>
+          </p>
+        </div>
+
+        {/* Video Player Section */}
+        <div className="mb-16">
+          <Card className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl border-neutral-200 dark:border-neutral-800/50 shadow-2xl overflow-hidden">
+            <CardContent className="p-0">
+              <div className="relative w-full" style={{ paddingBottom: '42.15456674473068%' }}>
+                <iframe 
+                  src="https://www.loom.com/embed/f1740373967e4294831185523b1225b1?sid=ac3c5f46-f894-4c47-91dd-6987fd461544" 
+                  frameBorder="0" 
+                  webkitallowfullscreen 
+                  mozallowfullscreen 
+                  allowFullScreen 
+                  className="absolute top-0 left-0 w-full h-full"
+                />
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Divider */}
+        <div className="mb-16 border-t border-neutral-200 dark:border-neutral-800"></div>
+
+        {/* Call to Action */}
+        <div className="mb-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-white mb-6 leading-tight">
+              Try Out Our A.I. Patient Coordinator
+            </h2>
+            <p className="text-xl sm:text-2xl text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl mx-auto leading-relaxed">
+              See the system in action by calling Ashley, one of our demo AI avatars
+            </p>
+            <a 
+              href="tel:+19545046630" 
+              className="inline-flex items-center gap-3 text-2xl sm:text-3xl font-bold text-sky-500 hover:text-sky-600 transition-colors group"
+            >
+              <span className="text-3xl group-hover:translate-x-1 transition-transform">➟</span>
+              <span>(954) 504-6630</span>
+            </a>
+          </div>
+          <div className="mt-12">
+            <p className="text-xl sm:text-2xl font-semibold text-neutral-900 dark:text-white mb-8 text-center">
+              Schedule Your Free AI Implementation Call Below
+            </p>
+            <div className="w-full">
+              <div className="w-full overflow-hidden rounded-lg">
+                <iframe 
+                  src="https://link.cliniclab.ai/widget/booking/1vPDtpCW6IYhWsxzfIXy" 
+                  style={{ width: '100%', border: 'none', minHeight: '800px' }} 
+                  scrolling="yes" 
+                  id="L4cBnq6KodSpAv5o1lp0_1771623981364"
+                  className="w-full"
+                />
+              </div>
+              <Script 
+                src="https://link.cliniclab.ai/js/form_embed.js" 
+                strategy="afterInteractive"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="mb-16 border-t border-neutral-200 dark:border-neutral-800"></div>
+
+        {/* Testimonials Section */}
+        <div className="mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center text-neutral-900 dark:text-white mb-12">
+            Hear From Top Doctors
+          </h2>
+          <div className="space-y-8">
+          {[
+            {
+              quote: "\"I feel less pressure... it's like a safety net!\"",
+              author: "— Dr. Anthony & Dr. Lauren",
+              videoUrl: "https://www.loom.com/embed/bd221950a9bc4aee9bfb2796574d943b",
+            },
+            {
+              quote: "\"Remarkable accuracy and empathy.\"",
+              author: "— Dr. Shantz, APRN",
+              videoUrl: "https://www.loom.com/embed/063d2fdccf374d3b991ed45469808b20",
+            },
+            {
+              quote: "$890K/Month to $1.2M in Under 60 Days | Case Study",
+              author: "— Kirkland Dental",
+              videoUrl: "https://www.loom.com/embed/092130bd8df148ca81012276391e5eb8",
+            },
+            {
+              quote: "\"It's the best decision I've made administratively.\"",
+              author: "— Dr. Ivry, Implant Surgeon",
+              videoUrl: "https://www.loom.com/embed/53fd98038cc34a47a62ed185666340ac",
+            },
+          ].map((testimonial, index) => (
+            <Card key={index} className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl border-neutral-200 dark:border-neutral-800/50 shadow-lg">
+              <CardContent className="pt-6">
+                <div className="flex flex-col sm:flex-row gap-6">
+                  <div className="flex-shrink-0 w-full sm:w-80 cursor-pointer" onClick={() => setSelectedTestimonial({ videoUrl: testimonial.videoUrl, author: testimonial.author })}>
+                    <div className="relative aspect-video bg-neutral-100 dark:bg-neutral-800 rounded-lg overflow-hidden group hover:opacity-90 transition-opacity">
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors z-10">
+                        <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg">
+                          <Play className="w-8 h-8 text-neutral-900 ml-1" fill="currentColor" />
+                        </div>
+                      </div>
+                      <div 
+                        className="w-full h-full pointer-events-none"
+                        dangerouslySetInnerHTML={{
+                          __html: `<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="${testimonial.videoUrl}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>`
+                        }}
+                      />
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-white mb-2">
+                      {testimonial.quote}
+                    </h3>
+                    <p className="text-lg text-neutral-600 dark:text-neutral-400">
+                      {testimonial.author}
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+          </div>
+        </div>
+
+        {/* Testimonial Video Modal */}
+        {selectedTestimonial && (
+          <div 
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+            onClick={() => setSelectedTestimonial(null)}
+          >
+            <div 
+              className="relative w-full max-w-5xl bg-white dark:bg-neutral-900 rounded-lg shadow-2xl overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setSelectedTestimonial(null)}
+                className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center bg-black/50 hover:bg-black/70 text-white rounded-full transition-colors"
+                aria-label="Close modal"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                <iframe 
+                  src={selectedTestimonial.videoUrl} 
+                  frameBorder="0" 
+                  webkitallowfullscreen 
+                  mozallowfullscreen 
+                  allowFullScreen 
+                  className="absolute top-0 left-0 w-full h-full"
+                />
+              </div>
+              <div className="p-6 bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800">
+                <p className="text-xl font-semibold text-neutral-900 dark:text-white text-center">
+                  {selectedTestimonial.author}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Divider */}
+        <div className="mb-16 border-t border-neutral-200 dark:border-neutral-800"></div>
+
+        {/* FAQ Section */}
+        <div className="mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center text-neutral-900 dark:text-white mb-4">
+            Frequently Asked Questions
+          </h2>
+          <div className="max-w-4xl mx-auto space-y-2 mt-12">
+            {[
+              {
+                question: "Can the AI integrate with our practice's scheduling system?",
+                subtitle: "(e.g., Dentrix, eClinicalWorks, EagleSoft, AthenaHealth)",
+                videoUrl: "https://www.loom.com/embed/1074cee36506445bb0402cefc8881d2c?sid=736d0421-9ae3-446c-94cd-7c61cdcee7c8",
+              },
+              {
+                question: "What happens if a patient asks something the AI can't answer?",
+                videoUrl: "https://www.loom.com/embed/f70b47e0d14d4242970fa425607b7111?sid=3270e98d-d6c6-4615-9c11-eda1bf260358",
+              },
+              {
+                question: "Can the AI handle both inbound and outbound calls?",
+                videoUrl: "https://www.loom.com/embed/fed4b02387cf4b7784c06bd1a0b58f88?sid=b4c4a306-af24-46b3-9a38-7c593d1be187",
+              },
+              {
+                question: "How long does it take to set up and go live?",
+                videoUrl: "https://www.loom.com/embed/57437ffec6e84e189973cd6d648cc791?sid=4b93176a-b9fb-4ee2-87c4-f3f5948f97aa",
+              },
+              {
+                question: "Is there training required for my staff?",
+                videoUrl: "https://www.loom.com/embed/01f483ba54434789861accade54a6a95?sid=b4b57b88-fc79-4a45-a896-9ce00e5cf667",
+              },
+              {
+                question: "Is the AI HIPAA compliant?",
+                videoUrl: "https://www.loom.com/embed/04a1a87adc654cd6a669ef09133afe2a",
+              },
+            ].map((faq, index) => {
+              const isOpen = openFaq === index;
+              return (
+                <Card 
+                  key={index} 
+                  className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl border-neutral-200 dark:border-neutral-800/50 shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden !py-0"
+                >
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? null : index)}
+                    className="w-full"
+                  >
+                    <CardContent className="pt-6 pb-2.5 px-6">
+                      <div className="flex items-center justify-between gap-4">
+                        <div className="flex-1 text-left">
+                          <h3 className="text-lg sm:text-xl font-bold text-neutral-900 dark:text-white">
+                            {faq.question}
+                          </h3>
+                          {faq.subtitle && (
+                            <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 mt-0.5">
+                              {faq.subtitle}
+                            </p>
+                          )}
+                        </div>
+                        <svg
+                          className={`w-5 h-5 text-neutral-500 dark:text-neutral-400 flex-shrink-0 transition-transform duration-200 ${
+                            isOpen ? "rotate-180" : ""
+                          }`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </div>
+                    </CardContent>
+                  </button>
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                      isOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
+                    }`}
+                  >
+                    <div className="px-6 py-3">
+                      <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                        <iframe 
+                          src={faq.videoUrl} 
+                          frameBorder="0" 
+                          webkitallowfullscreen 
+                          mozallowfullscreen 
+                          allowFullScreen 
+                          className="absolute top-0 left-0 w-full h-full rounded-lg"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="text-center pt-8 border-t border-neutral-200 dark:border-neutral-800">
+          <p className="text-neutral-600 dark:text-neutral-400 font-semibold mb-2">
+            Clinic Lab AI
+          </p>
+          <p className="text-sm text-neutral-500 dark:text-neutral-500">
+            © 2025 Clinic Lab AI. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
