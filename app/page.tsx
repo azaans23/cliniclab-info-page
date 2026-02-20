@@ -6,11 +6,7 @@ import Script from "next/script";
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
 
 export default function Home() {
@@ -132,8 +128,6 @@ export default function Home() {
                 <iframe 
                   src="https://www.loom.com/embed/f1740373967e4294831185523b1225b1?sid=ac3c5f46-f894-4c47-91dd-6987fd461544" 
                   frameBorder="0" 
-                  webkitallowfullscreen 
-                  mozallowfullscreen 
                   allowFullScreen 
                   className="absolute top-0 left-0 w-full h-full"
                 />
@@ -271,8 +265,6 @@ export default function Home() {
                 <iframe 
                   src={selectedTestimonial.videoUrl} 
                   frameBorder="0" 
-                  webkitallowfullscreen 
-                  mozallowfullscreen 
                   allowFullScreen 
                   className="absolute top-0 left-0 w-full h-full"
                 />
@@ -372,8 +364,6 @@ export default function Home() {
                         <iframe 
                           src={faq.videoUrl} 
                           frameBorder="0" 
-                          webkitallowfullscreen 
-                          mozallowfullscreen 
                           allowFullScreen 
                           className="absolute top-0 left-0 w-full h-full rounded-lg"
                         />
