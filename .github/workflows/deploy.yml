@@ -18,7 +18,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             set -e
-            cd /opt/cliniclab-info-page
+            cd /home/administrator/cliniclab-info-page
 
             # Ensure repo exists
             if [ ! -d ".git" ]; then
