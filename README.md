@@ -74,3 +74,5 @@ The page includes a theme toggle button in the bottom-right corner that switches
 
 The `cliniclab-portal` directory is kept for reference only and should not be modified. It contains the original portal implementation that this project's styling is based on.
 
+
+

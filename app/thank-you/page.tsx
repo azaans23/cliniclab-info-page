@@ -2,14 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Script from "next/script";
 import {
   Card,
   CardContent,
 } from "@/components/ui/card";
 import { Play } from "lucide-react";
 
-export default function Home() {
+export default function ThankYou() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [mounted, setMounted] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -107,16 +106,14 @@ export default function Home() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <div className="mb-6">
-            <p className="text-sm sm:text-base uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-3 font-semibold">
-              For Dental Practice Owners
-            </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-neutral-900 dark:text-white mb-4 leading-tight">
-              Tired of Losing Patients to Voicemail?
-            </h1>
-          </div>
-          <p className="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-            Watch below to find out how to use A.I. to bring in <span className="font-semibold text-neutral-900 dark:text-white">25% more patients</span> in as soon as <span className="font-semibold text-sky-500">14 days</span>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-neutral-900 dark:text-white mb-6">
+            You&apos;re Booked!
+          </h1>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-neutral-900 dark:text-white mb-4">
+            REQUIRED: MUST WATCH THIS VIDEO BEFORE YOUR CALL
+          </h2>
+          <p className="text-xl sm:text-2xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto italic mb-8">
+            Watch below to find out how to use A.I. to bring in 10-20 extra patients in as soon as <u>7 days</u>
           </p>
         </div>
 
@@ -139,42 +136,52 @@ export default function Home() {
         {/* Divider */}
         <div className="mb-16 border-t border-neutral-200 dark:border-neutral-800"></div>
 
-        {/* Call to Action */}
+        {/* Try Out AI Receptionist Section */}
         <div className="mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-white mb-6 leading-tight">
-              Try Out Our A.I. Patient Coordinator
+              Next, Try Out Our <em>A.I. Receptionist</em>
             </h2>
             <p className="text-xl sm:text-2xl text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-              See the system in action by calling Ashley, one of our demo AI avatars
+              See the system <u>NOW</u> by calling Ashley, one of our demo AI avatars
             </p>
             <a 
-              href="tel:+19545046630" 
-              className="inline-flex items-center gap-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-sky-500 hover:text-sky-600 transition-colors group"
+              href="tel:+19547513967" 
+              className="inline-flex items-center gap-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-sky-500 hover:text-sky-600 transition-colors group mb-4"
             >
               <span className="text-4xl sm:text-5xl lg:text-6xl group-hover:translate-x-1 transition-transform">➟</span>
-              <span>(954) 504-6630</span>
+              <span>(954) 751-3967</span>
             </a>
-          </div>
-          <div className="mt-12">
-            <p className="text-xl sm:text-2xl font-semibold text-neutral-900 dark:text-white mb-8 text-center">
-              Schedule Your Free AI Implementation Call Below
-            </p>
-            <div className="w-full">
-              <div className="w-full overflow-hidden rounded-lg">
-                <iframe 
-                  src="https://link.cliniclab.ai/widget/booking/1vPDtpCW6IYhWsxzfIXy" 
-                  style={{ width: '100%', border: 'none', minHeight: '800px' }} 
-                  scrolling="yes" 
-                  id="L4cBnq6KodSpAv5o1lp0_1771623981364"
-                  className="w-full"
-                />
-              </div>
-              <Script 
-                src="https://link.cliniclab.ai/js/form_embed.js" 
-                strategy="afterInteractive"
-              />
+            <div className="mt-6">
+              <a
+                href="tel:+19547513967"
+                className="inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg shadow-sky-500/25 text-lg transition-colors"
+              >
+                Tap Here to Call
+              </a>
             </div>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="mb-16 border-t border-neutral-200 dark:border-neutral-800"></div>
+
+        {/* Add to Calendar Section */}
+        <div className="mb-16 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 dark:text-white mb-4">
+            LAST STEP: Add Your Appointment to Your <em>Calendar!</em>
+          </h2>
+          <p className="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 mb-8">
+            (Google, Outlook, Apple, etc.)
+          </p>
+          <div className="max-w-4xl mx-auto">
+            <Image
+              src="https://storage.googleapis.com/msgsndr/lsRkLEFyYwqF2xpmgLp9/media/683d8c41e1360ea944245bb5.jpeg"
+              alt="Calendar"
+              width={1200}
+              height={800}
+              className="w-full h-auto rounded-lg shadow-lg"
+            />
           </div>
         </div>
 
@@ -192,6 +199,11 @@ export default function Home() {
               quote: "\"I feel less pressure... it's like a safety net!\"",
               author: "— Dr. Anthony & Dr. Lauren",
               videoUrl: "https://www.loom.com/embed/bd221950a9bc4aee9bfb2796574d943b",
+            },
+            {
+              quote: "\"I was really apprehensive when we started... Really helpful, big time-saver!\"",
+              author: "— Julie Koval, Office Manager",
+              videoUrl: "https://www.loom.com/embed/4ab57de9b9d64d7bac8ee986c6fb1548",
             },
             {
               quote: "\"Remarkable accuracy and empathy.\"",
@@ -337,7 +349,7 @@ export default function Home() {
                           )}
                         </div>
                         <svg
-                          className={`w-5 h-5 text-neutral-500 dark:text-neutral-400 flex-shrink-0 transition-transform duration-200 ${
+                          className={`w-5 h-5 text-neutral-500 dark:text-neutral-400 shrink-0 transition-transform duration-200 ${
                             isOpen ? "rotate-180" : ""
                           }`}
                           fill="none"
@@ -384,3 +396,4 @@ export default function Home() {
     </div>
   );
 }
+
