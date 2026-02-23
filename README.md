@@ -76,3 +76,6 @@ The `cliniclab-portal` directory is kept for reference only and should not be mo
 
 
 
+## CI/CD 
+
+The CI/CD Pipeline has been setup using github actions.
