@@ -3,17 +3,13 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Script from "next/script";
-import {
-  Card,
-  CardContent,
-} from "@/components/ui/card";
-import { Play } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Users, ShieldCheck, TrendingUp, ArrowRight } from "lucide-react";
 
-export default function Home() {
+export default function LandingPage() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [mounted, setMounted] = useState(false);
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [selectedTestimonial, setSelectedTestimonial] = useState<{ videoUrl: string; author: string } | null>(null);
 
   // Initialize theme from localStorage on mount
   useEffect(() => {
@@ -45,8 +41,14 @@ export default function Home() {
       {/* Animated Glowing Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-sky-500/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-indigo-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '0.5s' }} />
+        <div
+          className="absolute -bottom-40 -left-40 w-80 h-80 bg-indigo-500/20 rounded-full blur-3xl animate-pulse"
+          style={{ animationDelay: "1s" }}
+        />
+        <div
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl animate-pulse"
+          style={{ animationDelay: "0.5s" }}
+        />
       </div>
 
       {/* Logo at Top Right */}
@@ -59,9 +61,7 @@ export default function Home() {
           className="w-10 h-10"
         />
         <h1 className="text-2xl font-bold tracking-tight">
-          <span className="text-neutral-900 dark:text-white">
-            Clinic Lab{" "}
-          </span>
+          <span className="text-neutral-900 dark:text-white">Clinic Lab </span>
           <span className="text-sky-500">AI</span>
         </h1>
       </div>
@@ -104,271 +104,141 @@ export default function Home() {
       </button>
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
-        {/* Hero Section */}
-        <div className="text-center mb-16">
-          <div className="mb-6">
-            <p className="text-sm sm:text-base uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-3 font-semibold">
-              For Dental Practice Owners
-            </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-neutral-900 dark:text-white mb-4 leading-tight">
-              Tired of Losing Patients to Voicemail?
-            </h1>
-          </div>
-          <p className="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-            Watch below to find out how to use A.I. to bring in <span className="font-semibold text-neutral-900 dark:text-white">25% more patients</span> in as soon as <span className="font-semibold text-sky-500">14 days</span>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+        {/* Warning Banner */}
+        <div className="mb-6 text-center">
+          <p className="text-sm sm:text-base font-semibold text-amber-600 dark:text-amber-400">
+            ⚠️ WARNING: THIS AI IS ONLY FOR MEDICAL PRACTICE OWNERS ABLE TO HANDLE 50+ NEW PATIENTS A MONTH!
           </p>
         </div>
 
-        {/* Video Player Section */}
-        <div className="mb-16">
-          <Card className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl border-neutral-200 dark:border-neutral-800/50 shadow-2xl overflow-hidden">
-            <CardContent className="p-0">
-              <div className="relative w-full" style={{ paddingBottom: '42.15456674473068%' }}>
-                <iframe 
-                  src="https://www.loom.com/embed/f1740373967e4294831185523b1225b1?sid=ac3c5f46-f894-4c47-91dd-6987fd461544" 
-                  frameBorder="0" 
-                  allowFullScreen 
-                  className="absolute top-0 left-0 w-full h-full"
-                />
-              </div>
-            </CardContent>
-          </Card>
+        {/* Hero Section */}
+        <div className="text-center mb-8">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-neutral-900 dark:text-white mb-4 leading-tight">
+            Our new AI will{" "}
+            <span className="text-sky-500">GET YOU 50+ HIGH-VALUE PATIENTS</span>{" "}
+            In Your Chair Every Month
+          </h1>
+          <p className="text-2xl sm:text-3xl font-bold text-neutral-700 dark:text-neutral-300 italic">
+            While You Sleep!
+          </p>
         </div>
 
-        {/* Divider */}
-        <div className="mb-16 border-t border-neutral-200 dark:border-neutral-800"></div>
-
-        {/* Call to Action */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-white mb-6 leading-tight">
-              Try Out Our A.I. Patient Coordinator
-            </h2>
-            <p className="text-xl sm:text-2xl text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-              See the system in action by calling Ashley, one of our demo AI avatars
-            </p>
-            <a 
-              href="tel:+19545046630" 
-              className="inline-flex items-center gap-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-sky-500 hover:text-sky-600 transition-colors group"
-            >
-              <span className="text-4xl sm:text-5xl lg:text-6xl group-hover:translate-x-1 transition-transform">➟</span>
-              <span>(954) 504-6630</span>
-            </a>
+        {/* Survey Section */}
+        <div id="survey-section" className="mb-16">
+          {/* ClinicLab Survey Embed */}
+          <div className="w-full">
+            <iframe
+              src="https://link.cliniclab.ai/widget/survey/O5TNUWhQ0291mmjtuPpC"
+              style={{ border: "none", width: "100%", minHeight: "500px" }}
+              scrolling="no"
+              id="O5TNUWhQ0291mmjtuPpC"
+              title="survey"
+              className="w-full"
+            />
           </div>
-          <div className="mt-12">
-            <p className="text-xl sm:text-2xl font-semibold text-neutral-900 dark:text-white mb-8 text-center">
-              Schedule Your Free AI Implementation Call Below
-            </p>
-            <div className="w-full">
-              <div className="w-full overflow-hidden rounded-lg">
-                <iframe 
-                  src="https://link.cliniclab.ai/widget/booking/1vPDtpCW6IYhWsxzfIXy" 
-                  style={{ width: '100%', border: 'none', minHeight: '800px' }} 
-                  scrolling="yes" 
-                  id="L4cBnq6KodSpAv5o1lp0_1771623981364"
-                  className="w-full"
-                />
-              </div>
-              <Script 
-                src="https://link.cliniclab.ai/js/form_embed.js" 
-                strategy="afterInteractive"
-              />
-            </div>
-          </div>
+          <Script
+            src="https://link.cliniclab.ai/js/form_embed.js"
+            strategy="afterInteractive"
+          />
         </div>
 
-        {/* Divider */}
-        <div className="mb-16 border-t border-neutral-200 dark:border-neutral-800"></div>
-
-        {/* Testimonials Section */}
-        <div className="mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center text-neutral-900 dark:text-white mb-12">
-            Hear From Top Doctors
+        {/* Benefits Section */}
+        <div className="mb-16 space-y-8">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center text-neutral-900 dark:text-white mb-12 uppercase tracking-tight">
+            HERE ARE SOME REASONS WHY YOU SHOULD CHOOSE TO WORK WITH US
           </h2>
-          <div className="space-y-8">
-          {[
-            {
-              quote: "\"I feel less pressure... it's like a safety net!\"",
-              author: "— Dr. Anthony & Dr. Lauren",
-              videoUrl: "https://www.loom.com/embed/bd221950a9bc4aee9bfb2796574d943b",
-            },
-            {
-              quote: "\"Remarkable accuracy and empathy.\"",
-              author: "— Dr. Shantz, APRN",
-              videoUrl: "https://www.loom.com/embed/063d2fdccf374d3b991ed45469808b20",
-            },
-            {
-              quote: "$890K/Month to $1.2M in Under 60 Days | Case Study",
-              author: "— Kirkland Dental",
-              videoUrl: "https://www.loom.com/embed/092130bd8df148ca81012276391e5eb8",
-            },
-            {
-              quote: "\"It's the best decision I've made administratively.\"",
-              author: "— Dr. Ivry, Implant Surgeon",
-              videoUrl: "https://www.loom.com/embed/53fd98038cc34a47a62ed185666340ac",
-            },
-          ].map((testimonial, index) => (
-            <Card key={index} className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl border-neutral-200 dark:border-neutral-800/50 shadow-lg">
-              <CardContent className="pt-6">
-                <div className="flex flex-col sm:flex-row gap-6">
-                  <div className="flex-shrink-0 w-full sm:w-80 cursor-pointer" onClick={() => setSelectedTestimonial({ videoUrl: testimonial.videoUrl, author: testimonial.author })}>
-                    <div className="relative aspect-video bg-neutral-100 dark:bg-neutral-800 rounded-lg overflow-hidden group hover:opacity-90 transition-opacity">
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors z-10">
-                        <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg">
-                          <Play className="w-8 h-8 text-neutral-900 ml-1" fill="currentColor" />
-                        </div>
-                      </div>
-                      <div 
-                        className="w-full h-full pointer-events-none"
-                        dangerouslySetInnerHTML={{
-                          __html: `<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="${testimonial.videoUrl}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>`
-                        }}
-                      />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-white mb-2">
-                      {testimonial.quote}
-                    </h3>
-                    <p className="text-lg text-neutral-600 dark:text-neutral-400">
-                      {testimonial.author}
-                    </p>
-                  </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {/* Benefit 1 */}
+            <Card className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl border-neutral-200 dark:border-neutral-800/50 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+              <CardContent className="pt-8 pb-8 px-6">
+                <div className="mb-6 flex items-center justify-center w-16 h-16 rounded-full bg-sky-500/10 dark:bg-sky-500/20">
+                  <Users className="w-8 h-8 text-sky-500" />
                 </div>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-neutral-900 dark:text-white mb-4 leading-tight">
+                  We Handle The{" "}
+                  <span className="text-sky-500">PATIENTS FOR YOU</span>
+                </h3>
+                <p className="text-base sm:text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
+                  Our AI-driven system and in-house team manage patient inquiries,
+                  qualify them, and book appointments directly into your calendar.
+                </p>
+                <p className="text-lg font-bold text-neutral-900 dark:text-white">
+                  You focus on care—we handle the scheduling.
+                </p>
               </CardContent>
             </Card>
-          ))}
+
+            {/* Benefit 2 */}
+            <Card className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl border-neutral-200 dark:border-neutral-800/50 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+              <CardContent className="pt-8 pb-8 px-6">
+                <div className="mb-6 flex items-center justify-center w-16 h-16 rounded-full bg-sky-500/10 dark:bg-sky-500/20">
+                  <ShieldCheck className="w-8 h-8 text-sky-500" />
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-neutral-900 dark:text-white mb-4 leading-tight">
+                  No{" "}
+                  <span className="text-sky-500">No-Shows Or Unqualified Patients</span>
+                </h3>
+                <p className="text-base sm:text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
+                  We rigorously vet every new lead using smart AI filters before
+                  they&apos;re ever booked — no more wasted consults or fake requests.
+                </p>
+                <p className="text-lg font-bold text-neutral-900 dark:text-white">
+                  This ensures your team only talks to real patients who are ready
+                  to move forward.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Benefit 3 */}
+            <Card className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl border-neutral-200 dark:border-neutral-800/50 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+              <CardContent className="pt-8 pb-8 px-6">
+                <div className="mb-6 flex items-center justify-center w-16 h-16 rounded-full bg-sky-500/10 dark:bg-sky-500/20">
+                  <TrendingUp className="w-8 h-8 text-sky-500" />
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-neutral-900 dark:text-white mb-4 leading-tight">
+                  <span className="text-sky-500">SAVE MONEY AND SCALE</span> YOUR PRACTICE
+                </h3>
+                <p className="text-base sm:text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
+                  We don&apos;t sell leads. We install a done-for-you system that
+                  answers patient inquiries, qualifies them instantly, and fills your
+                  schedule — without the overhead of extra employees.
+                </p>
+                <p className="text-lg font-bold text-neutral-900 dark:text-white">
+                  Our tech becomes your front desk. Our campaigns bring in new
+                  patients.
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
 
-        {/* Testimonial Video Modal */}
-        {selectedTestimonial && (
-          <div 
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
-            onClick={() => setSelectedTestimonial(null)}
-          >
-            <div 
-              className="relative w-full max-w-5xl bg-white dark:bg-neutral-900 rounded-lg shadow-2xl overflow-hidden"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setSelectedTestimonial(null)}
-                className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center bg-black/50 hover:bg-black/70 text-white rounded-full transition-colors"
-                aria-label="Close modal"
+        {/* Final CTA */}
+        <div className="text-center mb-16">
+          <Card className="bg-gradient-to-br from-sky-500 via-sky-600 to-indigo-600 border-0 shadow-2xl overflow-hidden">
+            <CardContent className="pt-16 pb-16 px-6 sm:px-8">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4 uppercase tracking-tight">
+                YES, I WANT AN AI TEAM FOR MY PRACTICE
+              </h2>
+              <p className="text-xl sm:text-2xl text-white/95 mb-8 font-semibold">
+                Limited Spots Available
+              </p>
+              <Button
+                size="lg"
+                className="bg-white text-sky-600 hover:bg-neutral-50 text-xl px-10 py-7 h-auto font-extrabold shadow-2xl hover:shadow-3xl transition-all hover:scale-105"
+                onClick={() => {
+                  const surveySection = document.getElementById("survey-section");
+                  if (surveySection) {
+                    surveySection.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }
+                }}
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                <iframe 
-                  src={selectedTestimonial.videoUrl} 
-                  frameBorder="0" 
-                  allowFullScreen 
-                  className="absolute top-0 left-0 w-full h-full"
-                />
-              </div>
-              <div className="p-6 bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800">
-                <p className="text-xl font-semibold text-neutral-900 dark:text-white text-center">
-                  {selectedTestimonial.author}
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Divider */}
-        <div className="mb-16 border-t border-neutral-200 dark:border-neutral-800"></div>
-
-        {/* FAQ Section */}
-        <div className="mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center text-neutral-900 dark:text-white mb-4">
-            Frequently Asked Questions
-          </h2>
-          <div className="max-w-4xl mx-auto space-y-2 mt-12">
-            {[
-              {
-                question: "Can the AI integrate with our practice's scheduling system?",
-                subtitle: "(e.g., Dentrix, eClinicalWorks, EagleSoft, AthenaHealth)",
-                answer: "Yes. ClinicLab AI integrates with many leading EHR and practice management platforms, enabling it to schedule, reschedule, and cancel appointments directly within your calendar. If your system has restrictions on patient or appointment modifications, we will review compatibility and available workarounds during your AI strategy call.",
-              },
-              {
-                question: "What happens if a patient asks something the AI can't answer?",
-                answer: "When an inquiry requires clinical judgment or involves complex billing or insurance matters, ClinicLab AI can transfer the call to your front office and escalate the request to your team via email to ensure timely follow-up and continuity of care.",
-              },
-              {
-                question: "Can the AI handle both inbound and outbound calls?",
-                answer: "Yes. ClinicLab AI answers inbound calls 24/7 and can also place outbound calls for lead follow-up, callback requests, appointment confirmations, unscheduled treatment plan reminders, and patient reactivation initiatives.",
-              },
-              {
-                question: "How long does it take to set up and go live?",
-                answer: "In most cases, ClinicLab AI can be implemented within approximately seven days of onboarding. The system is configured to your practice and integrated so it can begin handling calls, scheduling appointments, and supporting patient communications promptly upon launch.",
-              },
-              {
-                question: "Is there training required for my staff?",
-                answer: "Minimal ongoing involvement is required. Beyond completing an initial customization form and a brief onboarding overview, ClinicLab AI operates in the background, reducing front-desk interruptions and allowing staff to focus on in-office patient needs.",
-              },
-              {
-                question: "Is the AI HIPAA compliant?",
-                answer: "Yes. ClinicLab AI is designed to support HIPAA compliance through strong security controls and encryption measures intended to safeguard patient data and communications.",
-              },
-            ].map((faq, index) => {
-              const isOpen = openFaq === index;
-              return (
-                <Card 
-                  key={index} 
-                  className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl border-neutral-200 dark:border-neutral-800/50 shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden !py-0"
-                >
-                  <button
-                    onClick={() => setOpenFaq(isOpen ? null : index)}
-                    className="w-full"
-                  >
-                    <CardContent className="pt-6 pb-2.5 px-6">
-                      <div className="flex items-center justify-between gap-4">
-                        <div className="flex-1 text-left">
-                          <h3 className="text-lg sm:text-xl font-bold text-neutral-900 dark:text-white">
-                            {faq.question}
-                          </h3>
-                          {faq.subtitle && (
-                            <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 mt-0.5">
-                              {faq.subtitle}
-                            </p>
-                          )}
-                        </div>
-                        <svg
-                          className={`w-5 h-5 text-neutral-500 dark:text-neutral-400 flex-shrink-0 transition-transform duration-200 ${
-                            isOpen ? "rotate-180" : ""
-                          }`}
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </div>
-                    </CardContent>
-                  </button>
-                  <div
-                    className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                      isOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
-                    }`}
-                  >
-                    <div className="px-6 pt-4 pb-4 border-t border-neutral-200 dark:border-neutral-800 mt-2">
-                      <p className="text-base sm:text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  </div>
-                </Card>
-              );
-            })}
-          </div>
+                Get Started Now
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Footer */}
