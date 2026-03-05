@@ -337,7 +337,7 @@ export default function Home() {
             Clinic Lab AI
           </p>
           <p className="text-sm text-neutral-500 text-neutral-500">
-            © 2025 Clinic Lab AI. All rights reserved.
+            © 2026 Clinic Lab AI. All rights reserved.
           </p>
         </div>
       </div>

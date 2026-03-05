@@ -329,7 +329,7 @@ export default function LandingPage() {
             Clinic Lab AI
           </p>
           <p className="text-sm text-neutral-500">
-            © 2025 Clinic Lab AI. All rights reserved.
+            © 2026 Clinic Lab AI. All rights reserved.
           </p>
         </div>
       </div>

@@ -332,6 +332,16 @@ export default function PreCallPage() {
             })}
           </div>
         </div>
+
+        {/* Footer */}
+        <div className="text-center pt-8 border-t border-neutral-800">
+          <p className="text-neutral-400 font-semibold mb-2">
+            Clinic Lab AI
+          </p>
+          <p className="text-sm text-neutral-500">
+            © 2026 Clinic Lab AI. All rights reserved.
+          </p>
+        </div>
       </div>
     </div>
   );

@@ -101,10 +101,20 @@ export default function BookPage() {
         </div>
 
         {/* Footer Copy */}
-        <div className="mt-16 text-center text-sm text-neutral-500">
+        <div className="mt-16 text-center text-sm text-neutral-500 mb-8">
           <p>
             After booking, you&apos;ll receive a confirmation email with all of
             your call details.
+          </p>
+        </div>
+
+        {/* Footer */}
+        <div className="text-center pt-8 border-t border-neutral-800">
+          <p className="text-neutral-400 font-semibold mb-2">
+            Clinic Lab AI
+          </p>
+          <p className="text-sm text-neutral-500">
+            © 2026 Clinic Lab AI. All rights reserved.
           </p>
         </div>
       </div>
