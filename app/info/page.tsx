@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-neutral-950 relative">
       {/* Background Pattern */}
-      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-900/20 via-neutral-950 to-neutral-950 pointer-events-none" />
+      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-900/20 via-neutral-950 to-neutral-950 pointer-events-none bg-grid-pattern" />
 
       {/* Animated Glowing Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">

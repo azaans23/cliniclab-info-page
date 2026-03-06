@@ -43,7 +43,7 @@ export default function LandingPage() {
       {/* End Meta Pixel Code */}
       
       {/* Background Pattern */}
-      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-900/20 via-neutral-950 to-neutral-950 pointer-events-none" />
+      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-900/20 via-neutral-950 to-neutral-950 pointer-events-none bg-grid-pattern" />
 
       {/* Animated Glowing Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
@@ -77,6 +77,15 @@ export default function LandingPage() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-8 sm:py-12 lg:py-16">
         {/* Hero Section */}
         <div className="text-center mb-8">
+          {/* Glowing Badge */}
+          <div className="inline-flex items-center justify-center mb-6">
+            <div className="relative px-5 py-2.5 bg-sky-500/20 border border-sky-400/50 rounded-full backdrop-blur-sm badge-glow">
+              <div className="absolute -inset-0.5 bg-sky-500/20 rounded-full blur-lg"></div>
+              <span className="relative text-sm sm:text-base font-bold text-sky-300 tracking-wide">
+                Stop Missing Patients to Voicemail Forever
+              </span>
+            </div>
+          </div>
           <h1 className="text-2xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-4 leading-tight">
             Our <span className="text-sky-500">Human AI</span> will book <span className="text-sky-500">37+</span> implant, Invisalign, and cosmetic patients in your sleep.
           </h1>

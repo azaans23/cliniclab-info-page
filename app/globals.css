@@ -134,5 +134,28 @@
   width: fit-content;
 }
 
+/* Subtle grid pattern */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Glowing badge animation */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(14, 165, 233, 0.2), 0 0 20px rgba(14, 165, 233, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(14, 165, 233, 0.3), 0 0 25px rgba(14, 165, 233, 0.2);
+  }
+}
+
+.badge-glow {
+  animation: glow-pulse 3s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(14, 165, 233, 0.2), 0 0 20px rgba(14, 165, 233, 0.15);
+}
+
 
 
